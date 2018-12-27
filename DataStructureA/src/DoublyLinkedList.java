@@ -21,31 +21,49 @@ public class DoublyLinkedList<T extends Comparable> {
 
 	public void insert(T x) {
 		if (header.next == null) {
-			if (header.next == null) {
-				header.next = header.prev = new Node<T>(x,null,null);
-				
-			}else if (header.next.data.compareTo(x)>0) {
-				header.next = header.next.prev = new Node<T>(x, null, header.next);				
-			}else {
-				Node<T> p = header.next;
-				while(p!=null) {
-					if(p.data.compareTo(x)>0) {
-						Node<T> temp = new Node<T> (x,p.prev,p);
-						if(p.prev!=null){
-							p.prev.next = p.prev = temp;
-							return;
-						}else
-							p=p.next;
-						
-					}
-					header.prev = header.prev.next = new Node<T>(x, header.prev, null);
-					
+			header.next = header.prev = new Node<T>(x, null, null);
+		} else if (header.next.data.compareTo(x) > 0) {
+			header.next = header.next.prev = new Node<T>(x, null, header.next);
+		} else {
+			Node<T> p = header.next;
+			while (p != null) {
+				if (p.data.compareTo(x) > 0) {
+					Node<T> temp = new Node<T>(x, p.prev, p);
+					if (p.prev != null) {
+						p.prev.next = p.prev = temp;
+						return;
+					} else
+						p = p.next;
+
 				}
+				header.prev = header.prev.next = new Node<T>(x, header.prev, null);
 			}
 		}
 	}
+
+	public boolean delete(T x) {
+		if (header.next == null)
+			return false;
+		else {
+			Node<T> p = header.next;
+			while (p != null) {
+				if(p.data.compareTo(x)>0)
+					return false;
+				else if(p.data.compareTo(x)==0) {
+					if(p.prev != null)
+					p.prev.next = p.next;
+				else
+					header.next = p.next;
+				if(p.next != null)
+					p.next.prev = p.prev;
+				else
+					header.prev = p.prev;
+				return true;				
+			}else
+				p = p.next;
+		}
 	
-	
-	
+		return false;
+	}
 
 }
