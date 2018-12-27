@@ -47,23 +47,37 @@ public class DoublyLinkedList<T extends Comparable> {
 		else {
 			Node<T> p = header.next;
 			while (p != null) {
-				if(p.data.compareTo(x)>0)
+				if (p.data.compareTo(x) > 0)
 					return false;
-				else if(p.data.compareTo(x)==0) {
-					if(p.prev != null)
-					p.prev.next = p.next;
-				else
-					header.next = p.next;
-				if(p.next != null)
-					p.next.prev = p.prev;
-				else
-					header.prev = p.prev;
-				return true;				
-			}else
-				p = p.next;
+				else if (p.data.compareTo(x) == 0) {
+					if (p.prev != null)
+						p.prev.next = p.next;
+					else
+						header.next = p.next;
+					if (p.next != null)
+						p.next.prev = p.prev;
+					else
+						header.prev = p.prev;
+					return true;
+				} else
+					p = p.next;
+			}
+			return false;
 		}
-	
-		return false;
+	}
+
+	public void print() {
+		System.out.println("Print in the forward direction : ");
+		for (Node<T> p = header.next; p != null; p = p.next)
+			System.out.print(p.data + "\t");
+		System.out.println();
+	}
+
+	public void printReverse() {
+		System.out.println("Print in the reverse direction : ");
+		for (Node<T> p = header.prev; p != null; p = p.prev)
+			System.out.print(p.data + "\t");
+		System.out.println();
 	}
 
 }
