@@ -24,7 +24,7 @@ public class Queue<T> {
 			return false;
 		}
 		
-		rear = (rear-1)%data.length;
+		rear = (rear+1)%data.length;
 		data[rear] =value;
 		return true;
 	}
