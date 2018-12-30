@@ -7,14 +7,12 @@ public class ArrayStack<T> implements Stack<T> {
 	@SuppressWarnings("unchecked")
 	public ArrayStack(int size) {
 		item = (T[]) new Object[size];
-
 	}
 
 	public boolean isEmpty() {
 		if (top < 0)
 			return true;
 		return false;
-
 	}
 
 	public boolean push(T newItem) {
