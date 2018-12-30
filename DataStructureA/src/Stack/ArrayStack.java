@@ -4,6 +4,7 @@ public class ArrayStack<T> implements Stack<T> {
 	private int top = -1;
 	private T[] item;
 
+	@SuppressWarnings("unchecked")
 	public ArrayStack(int size) {
 		item = (T[]) new Object[size];
 

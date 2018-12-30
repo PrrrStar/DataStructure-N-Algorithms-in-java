@@ -2,6 +2,7 @@ package List;
 public class DoublyLinkedList<T extends Comparable> {
 	private Node<T> header = new Node<T>();
 
+	@SuppressWarnings("hiding")
 	private class Node<T> {
 		private T data;
 		private Node<T> prev, next;

@@ -4,13 +4,10 @@ public class ListStack<T> implements Stack<T> {
 	private int size =0;
 	private Node<T> top;
 	
+	@SuppressWarnings("hiding")
 	private class Node<T>{
 		private T data;
 		private Node<T> next;
-		
-		public Node() {
-			this(null,null);
-		}
 		
 		public Node(T data, Node<T>n ) {
 			this.data = data;
@@ -25,7 +22,7 @@ public class ListStack<T> implements Stack<T> {
 	}
 	public boolean push(T newItem) {
 		size++;
-		top = new Node(newItem, top);
+		top = new Node<T>(newItem, top);
 		return true;
 	}
 	
