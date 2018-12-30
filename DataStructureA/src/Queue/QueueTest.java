@@ -2,7 +2,7 @@ package Queue;
 
 public class QueueTest {
 	public static void main(String[] args) {
-		Queue<Integer> q = new Queue<Integer>(5);
+		CircularQueue<Integer> q = new CircularQueue<Integer>(5);
 		q.enQ(1);
 		q.enQ(2);
 		System.out.println("deQ : "+q.deQ());

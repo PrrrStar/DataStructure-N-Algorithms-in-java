@@ -1,11 +1,11 @@
 package Queue;
 
-public class Queue<T> {
+public class CircularQueue<T> {
 
 	T[] data;
 	int front, rear;
 	
-	public Queue(int no) {
+	public CircularQueue(int no) {
 		data = (T[]) new Object[no];
 		front = rear = 0;
 	}
