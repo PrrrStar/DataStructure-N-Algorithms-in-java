@@ -16,7 +16,6 @@ public class DoublyLinkedList<T extends Comparable> {
 			data = d;
 			prev = p;
 			next = n;
-
 		}
 	}
 
