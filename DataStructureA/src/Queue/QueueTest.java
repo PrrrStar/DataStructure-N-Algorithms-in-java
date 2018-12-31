@@ -16,6 +16,20 @@ public class QueueTest {
 		q.enQ(8);
 		q.enQ(9);
 
+		
+		Deq<Integer> deq = new Deq<>();
+		
+		deq.addFirst(1);
+		deq.addLast(3);
+		deq.addFirst(4);
+		deq.addFirst(0);
+		
+		System.out.println("DEQ : "+deq.getFirst());
+		System.out.println("DEQ : "+deq.getFirst());
+		System.out.println("DEQ : "+deq.getFirst());
+		System.out.println("DEQ : "+deq.getFirst());
+		
+		
 	}
 
 }
