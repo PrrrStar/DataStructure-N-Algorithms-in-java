@@ -64,8 +64,65 @@ class Tree<T>{
 		}
 		return result;
 	}
+	
+	public String preOrder() {
+		String result ="";
+		if(root != null) {
+			result += root.data+" ";
+			
+			if(root.left != null) 
+				result += root.left.preOrder();
+			if(root.right != null)
+				result += root.right.preOrder();
+			
+		}
+		return result;
+	}
+	
+	public String inOrder() {
+		String result ="";
+		if(root != null) {
+			if(root.left != null)
+				result+= root.left.inOrder();
+			
+			result += root.data +" ";
+			
+			if(root.right != null)
+				result += root.right.inOrder();
+		}
+		return result;
+	}
+	
+	public String postOrder() {
+		String result = "";
+		if(root!= null) {
+			if(root.left != null)
+				result+= root.left.postOrder();
+			if(root.right != null)
+				result+= root.right.postOrder();
+		}
+		
+		result += root.data + " ";
+		return result;
+			
+	}
+	
 }
 
 public class TestTree {
+	public static void main(String []args) {
+		Tree<Character> n7 = new Tree<Character>('D');
+		Tree<Character> n6 = new Tree<Character>('C');
+		Tree<Character> n5 = new Tree<Character>('B');
+		Tree<Character> n4 = new Tree<Character>('A');
+		Tree<Character> n3 = new Tree<Character>(n6, new Character('/'), n7);
+		Tree<Character> n2 = new Tree<Character>(n4, new Character('*'), n5);
+		Tree<Character> t = new Tree<Character>(n2, new Character('-'), n3);
+
+		System.out.println("\n PreOrder : " + t.preOrder());
+		System.out.println("\n InOrder : " + t.inOrder());
+		System.out.println("\n Postorder : " + t.postOrder());
+		System.out.println("\n bsf : " + t.bfs());
+		}
 
 }
