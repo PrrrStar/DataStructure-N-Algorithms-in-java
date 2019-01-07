@@ -33,6 +33,8 @@ public class BinarySearch {
 		
 		int [] v=  {60,110,155,214,255,274,293,369,396,427,436,462};
 		
+		
+		
 		BinarySearch bs = new BinarySearch(v);
 		
 		System.out.println(bs.search(0, v.length, x));
