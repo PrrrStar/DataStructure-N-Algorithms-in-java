@@ -52,6 +52,16 @@ public class MaxHeap<T extends Comparable> {
 		return size;
 	}
 	
+	
+	public void insert(T element) {
+		a[++size] = element;
+		int current = size;
+		while(parent(current)>0&& a[current].compareTo(a[parent(current)])>0) {
+			swap(current, parent(current));
+			current = parent(current);
+		}
+	}
+	
 	public void heapify(int pos) {
 		if(!isLeaf(pos)) {
 			if(right(pos)>size) {
@@ -69,6 +79,64 @@ public class MaxHeap<T extends Comparable> {
 				}
 			}
 		}
+	}
+	
+	public T removeMax() {
+		T result = a[1];
+		a[1] = a[size--];
+		heapify(1);
+		return result;
+	}
+	
+	
+	public String toString() {
+		String result = "{";
+		for(int i =1; i<size; i++)
+			result +=a[i]+",";
+		result += a[size];
+		return result +")";
+		
+	}
+	
+	public void buildHeap(int index) {
+		if(index > 0 && index <= size/2) {
+			buildHeap(left(index));
+			buildHeap(right(index));
+			heapify(index);
+		}
+	}
+	
+	
+	public void sort() {
+		for(int i = size; i>1; i--) {
+			swap(i, 1);
+			size--;
+			heapify(1);
+		}
+		size = a.length -1;
+	}
+	
+	
+	boolean isHeap(int root) {
+		if(root <=0)
+			return true;
+		else if (root <= size/2) {
+			if(a[root]==null) {
+				System.out.println("heap has null");
+				isHeap(left(root));
+				isHeap(right(root));
+				return false;
+			}
+			else if (a[left(root)].compareTo(a[root])>0||a[right(root)].compareTo(a[root])>0) {
+				isHeap(left(root));
+				isHeap(right(root));
+				return false;
+			}else {
+				return true;
+			}
+		}
+		
+		return true;
 	}
 	
 	
